@@ -6,7 +6,7 @@ import {  createOpenApiExpressMiddleware, generateOpenApiDocument } from "trpc-t
 import  swaggerUi from 'swagger-ui-express';
 
 const app = express();
-
+app.use(express.json())
 app.use(
     "/api/trpc",
     trpcExpress.createExpressMiddleware({
@@ -23,7 +23,7 @@ const openApiDocs = generateOpenApiDocument(appRouter,{
     title: 'My TRPC CRUD ',
     description: '',
     version: "1.0.0",
-    baseUrl: process.env.BASE_URL||"https://trpc-crud.vercel.app/api"
+    baseUrl: process.env.BASE_URL||"https://trpc-crud.onrender.com/api"
 })
 
 app.use(
@@ -34,6 +34,9 @@ app.use(
 
 // IF developemnt Server ,use this
 
-/* app.listen(4000,()=>{
+app.listen(4000,()=>{
     console.log("TRPC is running")
-}) */
+}) 
+
+
+
