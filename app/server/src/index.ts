@@ -16,7 +16,8 @@ app.use(
 app.use(
     "/api",
     createOpenApiExpressMiddleware({
-        router: appRouter
+        router: appRouter,
+        createContext:()=>({})
     })
 )
 const openApiDocs = generateOpenApiDocument(appRouter,{
